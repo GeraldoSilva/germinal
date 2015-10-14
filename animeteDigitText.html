@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script type="text/javascript" src="AnimeteDigitText.js"></script>
+        <style type="text/css">
+        *{
+            background: #000;
+            padding:0;
+            border:0;
+            margin:0;
+            color: #0f0;
+        }
+        body, #console{
+
+            width:100%;
+            box-sizing: border-box;
+            word-wrap: break-word;
+        }
+        #console {
+            padding:15px 15px 0 15px;
+        }
+        #console, #message, label:before{
+            font-family: 'Lucida Console', 'Lucida Sans Typewriter', monaco, 'Bitstream Vera Sans Mono', monospace;
+            font-size: 2vw;
+            font-style: normal;
+            font-variant: normal;
+        }
+        #message{
+            outline:0;
+        }
+        label:before{
+            content:'catho@servers.devel$';
+            padding:10px 5px 0 16px;
+        }
+
+        </style>
+    </head>
+    <body>
+        <div id="console"></div>
+        <form onsubmit="return readCommand();">
+            <label for="message">
+                <input id="message" type="text" autocomplete="off"/>
+            </label>
+        </form>
+    </body>
+</html>
