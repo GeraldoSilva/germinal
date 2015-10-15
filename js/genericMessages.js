@@ -1,0 +1,60 @@
+var GenericMessage = {
+    messages: [
+        "As pessoas mudam. E muitas vezes se tornam as pessoas que elas disseram que nunca iriam se tornar.",
+        "Voce se surpreende ao perceber o quanto pode suportar.",
+        "Se seu trabalho era me proteger, voce foi pessima.",
+        "Pessoas nao sao como bonecas, nao podemos brincar com elas e depois guarda-las em caixas.",
+        "Eu prefiro morrer do que perder a vida!",
+        "Voce pode viver tempos interessantes.",
+        "E incrivel o numero de Super-viloes com doutorado.",
+        "Quando seu melhor amigo leva um fora... voce fica bebado com ele.",
+        "Ter voce de volta foi a coisa mais feliz que aconteceu na minha vida. E nao quero que acabe.",
+        "Voce usa tanto uma mascara que acaba esquecendo quem voce e.",
+        "Voce deve desistir da vida que planejou para poder ter a vida que o aguarda.",
+        "Nao chefe, nao estou dormindo, e que pousou um inseto no meu olho e eu estou tentando mata-lo sufocado!",
+        "Nao existem pessoas frias, existem pessoas que aprenderam a bloquear seus sentimentos.",
+        "Cara, sinto muito por voce. Infelizmente, o sentimento e nausea.",
+        "E o que fazer quando seu melhor nao e bom o bastante?",
+        "E o amor que eles tem por voce, ajudara a te guiar ate a luz, ou voce se perdera nessa escuridao?",
+        "Voce tem um bom coracao.. Entregue-o para alguem que se importe.",
+        "Todos precisamos acreditar em herois. Mesmo que os melhores estejam longe da perfeicao.",
+        "Nao sou um completo inutil, posso servir de mau exemplo.",
+        "Prefiro ser anti-social do que fingir que gosto das pessoas.",
+        "A vida nao tem que ser perfeita. So tem que ser vivida.",
+        "Nao se desculpe por quem voce e, e pelo o que voce quer.",
+        "Eu nao corro, eu nao me escondo, eu nao peco um tempo.",
+        "O problema do pessoal do pronto socorro e que eles nao precisam do socorro.",
+        "Nao deixe nada te botar pra baixo, e o unico jeito de viver!",
+        "O cerebro das pessoas para de funcionar quando pensam que vao perder alguem que amam.",
+        "Acha que conhece as pessoas e elas te surpreendem.",
+        "Fazer parte de algo especial, nos torna especial!",
+        "Nos tres juntos, como nos velhos tempos. O irmao que me amou demais, e um que nao me amou suficiente.",
+        "Nao sou um completo inutil, posso servir de mau exemplo.",
+        "Nos so enxergamos duas coisas nas pessoas: O que queremos ver e o que elas querem mostrar.",
+        "Aprendi que a melhor forma de nao se magoar e fingir que nao tem um coracao.",
+        "Mulheres nao tem prostata, eu pesquisei!",
+        "Voce entendeu o que fez hoje? Mentiu para mim, estragou as nossas chances.",
+        "Ninguem pode tirar isso de voce, esse e o nosso dia perfeito. Pra sempre.",
+        "O cerebro das pessoas para de funcionar quando elas acham que vao perder alguem que ama.",
+        "Voce sabe o que quer, mas foje do que precisa.",
+        "Nao sou egoista. Apenas valorizo a unica pessoa do mundo em quem eu posso confiar: eu mesma.",
+        "E o fim do mundo. E so o comeco.",
+        "Porque nos somos seres humanos e quando nos, humanos, queremos algo, muito, muito mesmo, nos mentimos!",
+        "La em Pato Branco tinha uma mulher que tinha um segredo.",
+        "Que segredo, Bozena?",
+        "Nao sei, era segredo dai.",
+        "Como voce pode se importar tao pouco consigo mesmo? Qual o seu problema?",
+        "As pessoas que nos fazem felizes, nunca sao as pessoas que nos esperamos. Entao quando voce encontrar alguem, tem que dar valor.",
+        "A Fisica e teorica mas a diversao e real.",
+        "Ate mesmo o passaro que voa mais alto uma hora tem que pousar no chao.",
+        "Tudo e possivel. O impossivel apenas demora mais.",
+        "Voce ja partiu meu coracao precisa atirar nele tambem?"],
+
+    getRandowMessage: function () {
+        return GenericMessage.messages[
+            Math.floor(
+                Math.random() * GenericMessage.messages.length
+            )
+        ];
+    }
+}
