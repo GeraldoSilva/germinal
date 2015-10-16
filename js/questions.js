@@ -1,10 +1,12 @@
 var Questions = {
     list: {
-        "procuro uma oportunidade": 1,
-        "nada": 2,
-        "dilma": 3,
-        "": 4,
-        "?": 7
+        "procuro uma oportunidade": 0,
+        "nada": 1,
+        "dilma": 2,
+        "": 3,
+        "?": 4,
+        "burgo": 5,
+        "sim": 6
     },
     isExists: function(question) {
         question = question.toLowerCase();

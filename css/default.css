@@ -20,4 +20,8 @@ body, #console{
 #message{
     outline:0;
     padding:0 2vw 0 2vw;
+    width: 100%;
+}
+img {
+    max-width:50%;
 }

@@ -1,15 +1,11 @@
 var position = -1,
-    speed = 10,
     element = null,
     cursorInterval= null,
     specialChar = {
         '*':'<br/>',
         ' ': "&nbsp;"};
 
-var message = '  _     __   _   ___  _ _  _     _   _ _  ___  ___   _ _  _   __  /^\\*'
-            + ' / \\   / _| / \\ |_ _|| U |/ \\   / \\ | | || __|| o \\ | | |/ \\ / _|| __|*'
-            + '| o | ( (_ | o | | | |   ( o ) ( o )| U || _| |   / | V ( o | (_ | _|*'
-            + '|_n_|  \\__||_n_| |_| |_n_|\\_/   \\_,7|___||___||_|\\\\  \\_/ \\_/ \\__||___|**';
+var message = Config.START_MESSAGE;
 
 
 function getElement(id)
@@ -18,57 +14,60 @@ function getElement(id)
 }
 
 var Writer = {
-    speed: 10,
+    speed: Config.WRITE_SPEED,
+    console: null,
+    reader: null,
 
     init: function() {
+        Writer.setUp();
         Writer.startCommands();
+        Writer.render()
     },
-    startCommands: function(){
+    setUp: function() {
+        Writer.console = getElement(Config.TERMINAL);
+        Writer.reader = getElement(Config.MESSAGE_READER);
+    },
+    startCommands: function() {
         if (Commands) {
             Commands.construct(
-                getElement('console'),
-                getElement('message')
+                Writer.console,
+                Writer.reader
             );
         }
+    },
+    write: function() {
+        var text = Writer.console.innerHTML,
+            item = getChar();
+        if (message.length > position) {
+            clearTimeout(cursorInterval);
+            if (specialChar[item] != undefined) {
+                Writer.console.innerHTML = text + specialChar[item]
+            } else {
+                Writer.console.innerHTML = text + getChar();
+            }
+            position++;
+            Writer.render();
+        } else {
+            clearTimeout(interval);
+            toogleReader(true)
+        }
+    },
+    render: function() {
+        toogleReader(false);
+        var time = Math.floor(Writer.speed * Math.random());
+        interval = setTimeout(
+            Writer.write,
+            time
+        );
     }
-
 }
 
 window.onclick = function(){
-    getElement('message').focus();
-}
-
-function frame()
-{
-    toogleReader(false);
-    var time = Math.floor(Writer.speed * Math.random());
-    interval = setTimeout(
-        printChar,
-        time
-    );
-}
-
-function printChar()
-{
-    var text = element.innerHTML,
-        item = getChar();
-    if (message.length > position) {
-        clearTimeout(cursorInterval);
-        if (specialChar[item] != undefined) {
-            element.innerHTML = text + specialChar[item]
-        } else {
-            element.innerHTML = text + getChar();
-        }
-        position++;
-        frame()
-    } else {
-        clearTimeout(interval);
-        toogleReader(true)
-    }
+    getElement(Config.MESSAGE_READER).focus();
 }
 
 function toogleReader(show) {
-    var msg = getElement('message')
+    var msg = getElement(Config.MESSAGE_READER)
     if (show) {
         msg.disabled = false;
         msg.focus();
@@ -79,38 +78,34 @@ function toogleReader(show) {
 
 function start() {
     Writer.init();
-    element = getElement('console');
-    frame();
 }
 
 function getChar()
 {
-    return message.slice(position, position+1);
+    return message.slice(
+        position,
+        position+1
+    );
 }
-
-
 
 function readCommand()
 {
     var text = GenericMessage.getRandowMessage() + '*',
-        value = getElement('message').value;
+        value = getElement(Config.MESSAGE_READER).value;
 
     if (Questions.isExists(value)) {
         text = Answers.getAnswer(
             Questions.getIndex(value)
-        );
+        ) + '*';
     } else if (Commands && Commands.isExists(value)) {
         text = Commands.invoke(value);
     }
     if (text) {
         message = message + text;
-        element.innerHTML += value+"<br/>";
+        getElement(Config.TERMINAL).innerHTML += value + "<br/>";
     }
-    getElement('message').value = '';
-    frame();
+    getElement(Config.MESSAGE_READER).value = '';
+    Writer.render();
     return false;
 }
-
-
-
 window.onload = start;

@@ -30,7 +30,12 @@ var Commands = {
         }
         return false;
     },
-    clear : function() {
+    image: function(src) {
+        Commands.printLastComand();
+        Commands.console.innerHTML += '<img src="' + src + '"/><br/>';
+        return false;
+    },
+    clear: function() {
         Commands.messageBox.value = '';
         Commands.console.innerHTML = '';
         return false;
